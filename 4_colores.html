@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>4 Colores</title>
+  <style>
+    .caja {
+      width: 200px;
+      height: 200px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="blue" class="caja" style="background: blue;"></div>
+  <div id="red" class="caja" style="background: red;"></div>
+  <div id="green" class="caja" style="background: green;"></div>
+  <div id="yellow" class="caja" style="background: yellow;"></div>
+
+  <div id="key" style="width:200px; height:200px; background:white; border:1px solid black; margin-top:20px;"></div>
+
+  <script>
+    // Cambiar div a negro al hacer click
+    const cajas = document.querySelectorAll(".caja");
+    cajas.forEach(caja => {
+      caja.addEventListener("click", () => {
+        caja.style.background = "black";
+      });
+    });
+
+    // Variable global de color
+    let color = "";
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "a") {
+        color = "pink";
+        document.getElementById("key").style.background = color;
+      } else if (event.key === "s") {
+        color = "orange";
+        document.getElementById("key").style.background = color;
+      } else if (event.key === "d") {
+        color = "lightblue";
+        document.getElementById("key").style.background = color;
+      } else if (event.key === "q") {
+        crearDiv("purple");
+      } else if (event.key === "w") {
+        crearDiv("gray");
+      } else if (event.key === "e") {
+        crearDiv("brown");
+      }
+    });
+
+    function crearDiv(color) {
+      const nuevo = document.createElement("div");
+      nuevo.style.width = "200px";
+      nuevo.style.height = "200px";
+      nuevo.style.background = color;
+      nuevo.style.border = "1px solid black";
+      nuevo.style.marginTop = "10px";
+      document.body.appendChild(nuevo);
+    }
+  </script>
+</body>
+</html>
